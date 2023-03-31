@@ -1,9 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
+import TriDCube from './components/3d/cube/3dCube';
 
 function App() {
   return (
     <div className="App">
+      <TriDCube />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
