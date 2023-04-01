@@ -14,12 +14,12 @@ function TriDCube() {
   return (
     <CubeWrapper>
         <CubeSpin>
-            <CubeFront>FRONT</CubeFront>
-            <CubeSpinBack>BACK</CubeSpinBack>
-            <CubeSpinTop>TOP</CubeSpinTop>
-            <CubeSpinBottom>BOTTOM</CubeSpinBottom>
-            <CubeLeft>LEFT</CubeLeft>
-            <CubeRight>RIGHT</CubeRight>
+            <CubeFront />
+            <CubeSpinBack />
+            <CubeSpinTop />
+            <CubeSpinBottom />
+            <CubeLeft />
+            <CubeRight />
         </CubeSpin>
     </CubeWrapper>
   )

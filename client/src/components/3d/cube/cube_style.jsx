@@ -42,19 +42,46 @@ const KeyframeSpin = keyframes`
 `
 const KeyframeMovement = keyframes`
     from { 
-        left: -50px;
-        top: -100px; 
+        left: -100px;
+        top: 0px; 
     }
     to { 
         left: 80vw; 
         top: 15vh;
     }
 `
+const KeyframFallSpin = keyframes`
+    from { transform: rotateX(-360deg) rotateY(360deg); }
+    to { transform: rotateX(0) rotateY(0); }
+`
+const KeyframeFall = keyframes`
+    from {
+        left: 80vw;
+        top: 15vh;
+    }
+    to {
+        left: 60vw;
+        top: 50vh
+    }
+`
+const KeyframeRoll = keyframes`
+    from {
+        transform: rotateX(-120deg) rotateY(350deg);
+    }
+    to {
+        transform: rotateX(0) rotateY(0);
+    }
+`
 const CubeSpin = styled.div`
 	position: relative;
 	transform-style: preserve-3d;
     transform-origin: 25px 25px;
-    animation: ${KeyframeSpin} 5s infinite linear, ${KeyframeMovement} 1s linear .5s forwards;
+    animation:
+    ${KeyframeSpin} 5s infinite forwards, 
+    ${KeyframeMovement} 1s linear .5s forwards,
+    ${KeyframFallSpin} .7s forwards 1.5s linear,
+    ${KeyframeFall} .7s linear 1.5s forwards,
+    ${KeyframeRoll} .5s linear 2.2s forwards;
 `
 const CubeSpinTop = styled.div`
 	position: absolute;
