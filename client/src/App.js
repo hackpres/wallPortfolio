@@ -1,7 +1,10 @@
 import './App.css';
 // import TriDCube from './components/3d/cube/3dCube';
 import { Canvas } from '@react-three/fiber';
-import Cylinder3d from './components/3d/Cylinder3d';
+import { Model as WallAnimation } from './components/3d/cube/WallAnimation';
+import { Suspense } from 'react';
+import { OrbitControls } from '@react-three/drei';
+// import Cylinder3d from './components/3d/Cylinder3d';
 
 function App() {
   return (
@@ -9,26 +12,17 @@ function App() {
       {/* <TriDCube /> */}
       <section className="App-header">
         {/* Canvas 1 */}
-        <Canvas>
+        <Canvas
+          camera={{ position: [5, 4, 60], fov: 10 }}
+        >
           {<pointLight position={[10, 10, 10]} />}
           {<ambientLight />}
-          <Cylinder3d position={[0, 0, 0]} />
+          <Suspense fallback={null}>
+            <WallAnimation />
+          </Suspense>
+          <OrbitControls />
+          {/* <Cylinder3d position={[0, 0, 0]} /> */}
         </Canvas>
-        {/* Canvas 2 */}
-        {/* <Canvas>
-          <pointLight position={[10, 10, 10]} />
-          <ambientLight intensity={0.5} />
-          <Cylinder3d position={[-1.2, 0, 0]} wireframe={true} />
-          <Cylinder3d position={[1.2, 0, 0]} wireframe={true} />
-        </Canvas> */}
- 
-        {/* Canvas 3 */}
-        {/* <Canvas>
-          <pointLight position={[10, 10, 10]} />
-          <ambientLight color={"darkgray"} />
-          <Cylinder3d position={[-1.2, 0, 0]} />
-          <Cylinder3d position={[1.2, 0, 0]} />
-        </Canvas> */}
       </section>
     </>
   );

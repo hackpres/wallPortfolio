@@ -26,7 +26,7 @@ function Cylinder3d(props) {
 	bevelSegments: 10
     };
 
-    useFrame((state, delta) => (ref.current.rotation.x += 0.01));
+    useFrame((state, delta) => (ref.current.rotation.x += 0.03));
 
     return (
         <mesh
