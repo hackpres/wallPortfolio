@@ -1,12 +1,10 @@
 import './App.css';
 // import TriDCube from './components/3d/cube/3dCube';
-import { Canvas, useThree } from '@react-three/fiber';
+import { Canvas } from '@react-three/fiber';
 import { Model as WallAnimation } from './components/3d/cube/WallAnimation';
 import { Suspense } from 'react';
 // import { OrbitControls } from '@react-three/drei';
 // import Cylinder3d from './components/3d/Cylinder3d';
-
-const deg2rad = degrees => degrees * (Math.PI / 180);
 
 function App() {
   return (
@@ -17,8 +15,8 @@ function App() {
         <Canvas
           camera={{ position: [0, 4,50], fov: 7.85, rotation: [-.025, -0.09, 0.006] }}
         >
-          {<pointLight position={[10, 10, 10]} />}
-          {<ambientLight />}
+          {<pointLight position={[10, 10, 10]} intensity={.4} />}
+          {<ambientLight color={'#404040'} intensity={.8} />}
           <Suspense fallback={null}>
             <WallAnimation />
           </Suspense>
