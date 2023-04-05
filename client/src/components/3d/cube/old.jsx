@@ -4,44 +4,43 @@ Command: npx gltfjsx@6.1.4 wallAnimation.glb
 */
 
 import React, { useEffect, useRef } from 'react'
-import { useGLTF, useAnimations } from '@react-three/drei';
+import { useGLTF, useAnimations } from '@react-three/drei'
 import * as THREE from 'three';
 
 export function Model(props) {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/wallAnimation.glb')
   const { actions } = useAnimations(animations, group)
-  console.log(materials);
 
-  useEffect(() => {
-      console.log(actions['cube1']);
-      actions['cube1'].setLoop(THREE.LoopOnce);
-      actions['cube2'].setLoop(THREE.LoopOnce);
-      actions['cube3'].setLoop(THREE.LoopOnce);
-      actions['cube4'].setLoop(THREE.LoopOnce);
-      actions['sphere1'].setLoop(THREE.LoopOnce);
-      actions['sphere2'].setLoop(THREE.LoopOnce);
-      actions['sphere3'].setLoop(THREE.LoopOnce);
-      actions['sphere4'].setLoop(THREE.LoopOnce);
-      actions['cube1'].clampWhenFinished = true;
-      actions['cube2'].clampWhenFinished = true;
-      actions['cube3'].clampWhenFinished = true;
-      actions['cube4'].clampWhenFinished = true;
-      actions['sphere1'].clampWhenFinished = true;
-      actions['sphere2'].clampWhenFinished = true;
-      actions['sphere3'].clampWhenFinished = true;
-      actions['sphere4'].clampWhenFinished = true;
-      actions['cube1'].play()
-      actions['cube2'].play()
-      actions['cube3'].play()
-      actions['cube4'].play()
-      actions['sphere1'].play()
-      actions['sphere2'].play()
-      actions['sphere3'].play()
-      actions['sphere4'].play()
+    useEffect(() => {
+      console.log(actions['cubeAction1']);
+      actions['cubeAction1'].setLoop(THREE.LoopOnce);
+      actions['cubeAction2'].setLoop(THREE.LoopOnce);
+      actions['cubeAction3'].setLoop(THREE.LoopOnce);
+      actions['cubeAction4'].setLoop(THREE.LoopOnce);
+      actions['sphereAction1'].setLoop(THREE.LoopOnce);
+      actions['sphereAction2'].setLoop(THREE.LoopOnce);
+      actions['sphereAction3'].setLoop(THREE.LoopOnce);
+      actions['sphereAction4'].setLoop(THREE.LoopOnce);
+      actions['cubeAction1'].clampWhenFinished = true;
+      actions['cubeAction2'].clampWhenFinished = true;
+      actions['cubeAction3'].clampWhenFinished = true;
+      actions['cubeAction4'].clampWhenFinished = true;
+      actions['sphereAction1'].clampWhenFinished = true;
+      actions['sphereAction2'].clampWhenFinished = true;
+      actions['sphereAction3'].clampWhenFinished = true;
+      actions['sphereAction4'].clampWhenFinished = true;
+      actions['cubeAction1'].play()
+      actions['cubeAction2'].play()
+      actions['cubeAction3'].play()
+      actions['cubeAction4'].play()
+      actions['sphereAction1'].play()
+      actions['sphereAction2'].play()
+      actions['sphereAction3'].play()
+      actions['sphereAction4'].play()
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Scene">
@@ -55,8 +54,8 @@ export function Model(props) {
         <mesh name="cube4" geometry={nodes.cube4.geometry} material={materials.objectTexture} position={[-9.95, 3.7, 2.56]} rotation={[1.66, 0.6, 0.49]} scale={0.3} />
         <mesh name="sphere1" geometry={nodes.sphere1.geometry} material={materials.objectTexture} position={[-11.64, 4.59, 4.03]} scale={0.36} />
         <mesh name="sphere2" geometry={nodes.sphere2.geometry} material={materials.objectTexture} position={[-9.37, 3.11, 5.15]} scale={0.36} />
-        <mesh name="sphere3" geometry={nodes.sphere3.geometry} material={materials.objectTexture} position={[-15.03, 2.26, 2.88]} rotation={[0.51, -0.49, 0.29]} scale={0.36} />
         <mesh name="sphere4" geometry={nodes.sphere4.geometry} material={materials.objectTexture} position={[-12.52, 3.2, 2.04]} rotation={[0.51, -0.49, 0.29]} scale={0.36} />
+        <mesh name="sphere3" geometry={nodes.sphere3.geometry} material={materials.objectTexture} position={[-15.03, 2.26, 2.88]} rotation={[0.51, -0.49, 0.29]} scale={0.36} />
       </group>
     </group>
   )
