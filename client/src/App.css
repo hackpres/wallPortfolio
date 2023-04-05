@@ -1,3 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  overflow: hidden;
+}
+
+.canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  outline: none;
+}
+
 .App {
   text-align: center;
 }
@@ -36,5 +52,15 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+@media screen and (max-width: 320px) {
+  .App-header{
+    height: 30vh;
+  }
+}
+@media screen and (min-width: 321px) and (max-width: 425px) {
+  .App-header {
+    height: 40vh;
   }
 }

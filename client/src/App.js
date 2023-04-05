@@ -12,8 +12,9 @@ function App() {
       {/* <TriDCube /> */}
       <section className="App-header" >
         {/* Canvas 1 */}
-        <Canvas
-          camera={{ position: [0, 4,50], fov: 7.85, rotation: [-.025, -0.09, 0.006] }}
+        <Canvas className='canvas'
+          camera={{ position: [0, 4,50] , fov: 7.85, rotation: [-.025, -0.09, 0.006] }}
+          
         >
           {<pointLight position={[10, 10, 10]} intensity={1} />}
           {<ambientLight color={'#404040'} intensity={2} />}
