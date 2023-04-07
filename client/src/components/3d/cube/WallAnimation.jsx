@@ -6,13 +6,11 @@ Command: npx gltfjsx@6.1.4 wallAnimation.glb
 import React, { useEffect, useRef } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei';
 import * as THREE from 'three';
-import { useThree } from '@react-three/fiber';
 
 export function Model(props) {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/wallAnimation.glb')
   const { actions } = useAnimations(animations, group)
-  const { viewport } = useThree();
 
   const loopOnceAndClampAtEnd = () => {
     for (let [key] of Object.entries(actions)) {
@@ -34,16 +32,10 @@ export function Model(props) {
     startAnimation();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  let scaleFactorial;
-  if (viewport.width < 320) {
-    scaleFactorial = 11
-  } else if (viewport.width < 425) {
-    scaleFactorial = 15
-  }
-
+  
   return (
     <group ref={group} {...props} dispose={null}>
-      <group name="Scene" scale={(viewport.width / scaleFactorial)}>
+      <group name="Scene">
         <mesh name="backWall" geometry={nodes.backWall.geometry} material={materials.backWall} position={[0, 5.3, 0]} scale={[11.12, 5.37, 0.14]} />
         <mesh name="floorPlane" geometry={nodes.floorPlane.geometry} material={materials.floorPlane} position={[0, 0, 3.67]} scale={[11.15, 1, 3.88]} />
         <mesh name="impactWall" geometry={nodes.impactWall.geometry} material={materials.impactWall} position={[11.16, 5.3, 3.74]} rotation={[0, -Math.PI / 2, 0]} scale={[3.86, 5.37, 0.14]} />

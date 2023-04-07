@@ -54,13 +54,28 @@ html, body {
     transform: rotate(360deg);
   }
 }
-@media screen and (max-width: 320px) {
+/* @media screen and (max-width: 380px) {
   .App-header{
-    height: 30vh;
+    height: 45vh;
   }
 }
-@media screen and (min-width: 321px) and (max-width: 425px) {
+@media screen and (min-width: 381px) and (max-width: 425px) {
   .App-header {
     height: 40vh;
   }
 }
+@media screen and (min-width: 426px) and (max-width: 768px) {
+  .App-header {
+    height: 65vh;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 850px) {
+  .App-header {
+    height: 60vh;
+  }
+}
+@media screen and (min-width: 851px) and (max-width: 1024px) {
+  .App-header {
+    height: 95vh;
+  }
+} */

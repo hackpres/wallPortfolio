@@ -4,46 +4,54 @@ Command: npx gltfjsx@6.1.4 wallAnimation.glb
 */
 
 import React, { useEffect, useRef } from 'react'
-import { useGLTF, useAnimations } from '@react-three/drei'
+import { useGLTF, useAnimations } from '@react-three/drei';
 import * as THREE from 'three';
+
+// let scaleFactorial;
 
 export function Model(props) {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/wallAnimation.glb')
   const { actions } = useAnimations(animations, group)
 
-    useEffect(() => {
-      console.log(actions['cubeAction1']);
-      actions['cubeAction1'].setLoop(THREE.LoopOnce);
-      actions['cubeAction2'].setLoop(THREE.LoopOnce);
-      actions['cubeAction3'].setLoop(THREE.LoopOnce);
-      actions['cubeAction4'].setLoop(THREE.LoopOnce);
-      actions['sphereAction1'].setLoop(THREE.LoopOnce);
-      actions['sphereAction2'].setLoop(THREE.LoopOnce);
-      actions['sphereAction3'].setLoop(THREE.LoopOnce);
-      actions['sphereAction4'].setLoop(THREE.LoopOnce);
-      actions['cubeAction1'].clampWhenFinished = true;
-      actions['cubeAction2'].clampWhenFinished = true;
-      actions['cubeAction3'].clampWhenFinished = true;
-      actions['cubeAction4'].clampWhenFinished = true;
-      actions['sphereAction1'].clampWhenFinished = true;
-      actions['sphereAction2'].clampWhenFinished = true;
-      actions['sphereAction3'].clampWhenFinished = true;
-      actions['sphereAction4'].clampWhenFinished = true;
-      actions['cubeAction1'].play()
-      actions['cubeAction2'].play()
-      actions['cubeAction3'].play()
-      actions['cubeAction4'].play()
-      actions['sphereAction1'].play()
-      actions['sphereAction2'].play()
-      actions['sphereAction3'].play()
-      actions['sphereAction4'].play()
+  console.log(group)
+
+  const loopOnceAndClampAtEnd = () => {
+    for (let [key] of Object.entries(actions)) {
+      actions[key].clampWhenFinished = true;
+      actions[key].setLoop(THREE.LoopOnce);
+}
+  };
+  const startAnimation = () => {
+    for (let [key] of Object.entries(actions)) {
+      actions[key].play();
+    }
+  };
+  useEffect(() => {
+    materials['backWall'].color = new THREE.Color('#21353d');
+    materials['impactWall'].color = new THREE.Color('#3ca4af');
+    materials['floorPlane'].color = new THREE.Color('#21353d');
+    materials['objectTexture'].color = new THREE.Color('#f6eed7');
+    loopOnceAndClampAtEnd();
+    startAnimation();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  
+ 
+  // if (viewport.width <= 320) {
+  //   scaleFactorial = 11
+  // } else if (viewport.width <= 425) {
+  //   scaleFactorial = .8
+  // } else if (viewport.width <= 768) {
+  //   scaleFactorial = 13
+  // } else if (viewport.width <= 850) {
+  //   scaleFactorial = 13.5
+  // } else if (viewport.width <= 1024) {
+  //   scaleFactorial = 14
+  // }
+
   return (
     <group ref={group} {...props} dispose={null}>
-      <group name="Scene">
+      <group name="Scene" >
         <mesh name="backWall" geometry={nodes.backWall.geometry} material={materials.backWall} position={[0, 5.3, 0]} scale={[11.12, 5.37, 0.14]} />
         <mesh name="floorPlane" geometry={nodes.floorPlane.geometry} material={materials.floorPlane} position={[0, 0, 3.67]} scale={[11.15, 1, 3.88]} />
         <mesh name="impactWall" geometry={nodes.impactWall.geometry} material={materials.impactWall} position={[11.16, 5.3, 3.74]} rotation={[0, -Math.PI / 2, 0]} scale={[3.86, 5.37, 0.14]} />
@@ -54,8 +62,8 @@ export function Model(props) {
         <mesh name="cube4" geometry={nodes.cube4.geometry} material={materials.objectTexture} position={[-9.95, 3.7, 2.56]} rotation={[1.66, 0.6, 0.49]} scale={0.3} />
         <mesh name="sphere1" geometry={nodes.sphere1.geometry} material={materials.objectTexture} position={[-11.64, 4.59, 4.03]} scale={0.36} />
         <mesh name="sphere2" geometry={nodes.sphere2.geometry} material={materials.objectTexture} position={[-9.37, 3.11, 5.15]} scale={0.36} />
-        <mesh name="sphere4" geometry={nodes.sphere4.geometry} material={materials.objectTexture} position={[-12.52, 3.2, 2.04]} rotation={[0.51, -0.49, 0.29]} scale={0.36} />
         <mesh name="sphere3" geometry={nodes.sphere3.geometry} material={materials.objectTexture} position={[-15.03, 2.26, 2.88]} rotation={[0.51, -0.49, 0.29]} scale={0.36} />
+        <mesh name="sphere4" geometry={nodes.sphere4.geometry} material={materials.objectTexture} position={[-12.52, 3.2, 2.04]} rotation={[0.51, -0.49, 0.29]} scale={0.36} />
       </group>
     </group>
   )
