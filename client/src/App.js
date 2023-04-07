@@ -2,9 +2,10 @@ import './App.css';
 // import TriDCube from './components/3d/cube/3dCube';
 import * as THREE from 'three';
 import { Canvas } from '@react-three/fiber';
-import { Model as WallAnimation } from './components/3d/cube/WallAnimation';
+import { Model as WallAnimation } from './components/3d/headerAnimation/WallAnimation';
 import { Suspense, useState, useEffect } from 'react';
 import { PerspectiveCamera } from 'three';
+import Title from './components/tilte/Title';
 // import { OrbitControls } from '@react-three/drei';
 // import Cylinder3d from './components/3d/Cylinder3d';
   
@@ -17,13 +18,10 @@ import { PerspectiveCamera } from 'three';
 //   );
 // }
 function App() {
-
+  //get window dimensions and add event listener for resize
   function getWindowDimensions() {
     const { innerWidth: width, innerHeight: height } = window;
-    return {
-      width,
-      height
-    };
+    return {width, height};
   }
   function useWindowDimensions() {
     const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
@@ -38,19 +36,20 @@ function App() {
     return windowDimensions;
   }
   const { width } = useWindowDimensions();
-  console.log(width);
+  //setup cameras!
+    //mobile cam
   const mobileCamera = new PerspectiveCamera(36, 2.5, 9, 20.7);
   mobileCamera.position.set(8.8, 3.2, 16.7);
   let mobileForward = new THREE.Vector3(0, 0, -16.7);
   let mobileLookat = new THREE.Vector3().copy(mobileCamera.position).add(mobileForward);
   mobileCamera.lookAt(mobileLookat);
-  
+    //desktop cam
   const desktopCamera = new PerspectiveCamera(43, 1.77, 9, 20.7);
   desktopCamera.position.set(4.3, 3.37, 16.7);
   let desktopForward = new THREE.Vector3(0, 0, -16.7);
   let desktopLookat = new THREE.Vector3().copy(desktopCamera.position).add(desktopForward);
   desktopCamera.lookAt(desktopLookat);
-  
+    //check if screen resolution is mobile width
   function isMobile(w) {
     if (w <= 500) {
       return true
@@ -69,10 +68,12 @@ function App() {
           <Suspense fallback={null}>
             <WallAnimation />
           </Suspense>
+          
           {/* <CameraHelper /> */}
           {/* <OrbitControls /> */}
           {/* <Cylinder3d position={[0, 0, 0]} /> */}
         </Canvas>
+        <Title />
       </section>
     </>
   );

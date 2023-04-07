@@ -5,6 +5,7 @@
 }
 html, body {
   overflow: hidden;
+  font-family: 'Baloo 2', cursive;
 }
 
 .canvas {
