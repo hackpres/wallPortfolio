@@ -5,10 +5,10 @@ function Title() {
     return (
       <TagWrapper>
         <ThrowingTagline>
-            Stop throwing your web design at the wall 
+            Don't throw your web design at the wall 
         </ThrowingTagline>
         <SubTagline>
-            hoping something sticks
+            and hope something sticks
         </SubTagline>
       </TagWrapper>
     

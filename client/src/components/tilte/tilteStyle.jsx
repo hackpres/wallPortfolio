@@ -19,7 +19,7 @@ const ThrowingTagline = styled.h1`
     line-height: 1.1em;
 `;
 const SubTagline = styled.p`
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     margin: .35rem 4rem;
     color: #3ca4af;
     font-weight: 400;
